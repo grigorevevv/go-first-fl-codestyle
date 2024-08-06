@@ -22,13 +22,13 @@ func attack(charName, charClass string) string {
 }
 
 // обратите внимание на "if else" и на "else"
-func defence(char_name, char_class string) string {
-	if char_class == "warrior" {
-		return fmt.Sprintf("%s блокировал %d урона.", char_name, 10+randint(5, 10))
-	} else if char_class == "mage" {
-		return fmt.Sprintf("%s блокировал %d урона.", char_name, 10+randint(-2, 2))
-	} else if char_class == "healer" {
-		return fmt.Sprintf("%s блокировал %d урона.", char_name, 10+randint(2, 5))
+func defence(charName, charClass string) string {
+	if charClass == "warrior" {
+		return fmt.Sprintf("%s блокировал %d урона.", charName, 10+randint(5, 10))
+	} else if charClass == "mage" {
+		return fmt.Sprintf("%s блокировал %d урона.", charName, 10+randint(-2, 2))
+	} else if charClass == "healer" {
+		return fmt.Sprintf("%s блокировал %d урона.", charName, 10+randint(2, 5))
 	}
 	return "неизвестный класс персонажа"
 }
@@ -69,16 +69,12 @@ func startTraining(charName, charClass string) string {
 	for cmd != "skip" {
 		fmt.Print("Введи команду: ")
 		fmt.Scanf("%s\n", &cmd)
-
-		if cmd == "attack" {
+		switch  {
+		case cmd == "attack":
 			fmt.Println(attack(charName, charClass))
-		}
-
-		if cmd == "defence" {
+		case cmd == "defence":
 			fmt.Println(defence(charName, charClass))
-		}
-
-		if cmd == "special" {
+		case cmd == "special":
 			fmt.Println(special(charName, charClass))
 		}
 	}
